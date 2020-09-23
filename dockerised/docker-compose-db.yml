@@ -1,0 +1,19 @@
+version: "3.6"
+services:
+
+    mysql8-sample:
+        image: mysql:8.0
+        container_name: mysql8-sample
+        environment:
+            - MYSQL_RANDOM_ROOT_PASSWORD=yes
+            - MYSQL_DATABASE=test_db
+            - MYSQL_USER=test_user
+            - MYSQL_PASSWORD=test_pswd
+        volumes:
+            - ./sampledb:/var/lib/mysql # otherwise it will take a heroically long time to init the db
+        networks:
+            - default
+    
+networks:
+    default:
+        name: mysql-test-net

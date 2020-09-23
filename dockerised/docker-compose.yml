@@ -1,0 +1,25 @@
+version: "3.6"
+services:
+    mysimplemysql8-tester:
+        build:
+            context: ../
+            dockerfile: ./dockerised/Dockerfile
+        image: mysimplemysql8-tester
+        container_name: mysimplemysql8-tester
+        networks:
+            - default
+
+    mysql8-sample:
+        image: mysql:8.0
+        container_name: mysql8-sample
+        environment:
+            - MYSQL_RANDOM_ROOT_PASSWORD=yes
+            - MYSQL_DATABASE=test_db
+            - MYSQL_USER=test_user
+            - MYSQL_PASSWORD=test_pswd
+        networks:
+            - default
+    
+networks:
+    default:
+        name: mysql-test-net

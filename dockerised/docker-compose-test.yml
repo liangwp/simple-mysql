@@ -1,0 +1,15 @@
+version: "3.6"
+services:
+    mysimplemysql8-tester:
+        build:
+            context: ../
+            dockerfile: ./dockerised/Dockerfile
+        image: mysimplemysql8-tester
+        container_name: mysimplemysql8-tester
+        networks:
+            - default
+
+    
+networks:
+    default:
+        name: mysql-test-net

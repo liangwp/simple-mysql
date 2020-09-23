@@ -1,0 +1,20 @@
+version: "3.6"
+services:
+
+    mysql8-sample:
+        image: percona:8.0.20-11
+        container_name: mysql8-sample
+        environment:
+            - MYSQL_RANDOM_ROOT_PASSWORD=yes
+            - MYSQL_DATABASE=test_db
+            - MYSQL_USER=test_user
+            - MYSQL_PASSWORD=test_pswd
+        # volumes:
+        #     - ./samplepercona:/var/lib/mysql
+        # Doesn't work with mounted volume, 2020.09.06, percona 8.0.20-11
+        networks:
+            - default
+    
+networks:
+    default:
+        name: mysql-test-net
