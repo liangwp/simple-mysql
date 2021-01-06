@@ -2,9 +2,10 @@
 
 ## Features
 
-MySql8 connector exposing some common use-cases with a simple api.
+A thin wrapper around the official MySql8 XDevAPI connector exposing some common use-cases with a simple promise-based api.
 
 * [x] Connection pooling
+* [x] Wait for connection to be ready
 * [x] Basic SQL queries (using common SQL syntax instead of chainable api)
 * [ ] Transactions (WIP)
 * [ ] Collections (only supports chainable api)

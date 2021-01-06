@@ -1,4 +1,4 @@
-# Semantic versioning depends on on https://github.com/fmahnke/shell-semver
+# Semantic versioning depends on https://github.com/fmahnke/shell-semver
 
 # MAIN IMAGE TAG, UPDATE THIS FOR EACH PROJECT
 # IMAGE_TAG=not-using-this

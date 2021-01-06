@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@mysql/xdevapi": "^8.0.20",
+    "@mysql/xdevapi": "8.0.22",
     "bluebird": "^3.7.2",
     "promise-retry": "^2.0.1"
   }
