@@ -3,10 +3,11 @@
 ## Features
 
 MySql8 connector exposing some common use-cases with a simple api.
-* Connection pooling
-* Basic SQL queries (using common SQL syntax instead of chainable api)
-* Transactions
-* Collections (only supports chainable api)
+
+* [x] Connection pooling
+* [x] Basic SQL queries (using common SQL syntax instead of chainable api)
+* [ ] Transactions (WIP)
+* [ ] Collections (only supports chainable api)
 
 Additional features
 * Init Promise: Wait for database connection to be up before resolving (useful for running in docker, esp in dev)
@@ -92,6 +93,6 @@ Promise.resolve()
 ## Run tests
 
 ```
-cd dockerised
+cd dev
 docker-compose up --build
 ```

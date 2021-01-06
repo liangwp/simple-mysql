@@ -1,0 +1,144 @@
+# For testing
+
+### Send message to capx-worker via HTTP
+GET http://localhost:8081 HTTP/1.1
+
+### Send message to capx-worker via HTTP
+POST http://localhost:8081/receive HTTP/1.1
+content-type: application/json
+
+{
+    "source": "file:/workspace/src/messagehandling.py",
+    "context": {
+        "project_id": "project_id",
+        "timecode": "timecode",
+        "debug": false
+    },
+    "data": {
+        "sample": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    },
+    "action": "process",
+    "prev": [
+        {
+            "worker": "controller",
+            "start": 12345678,
+            "duration": 50
+        }
+    ],
+    "next": [
+        "amqp:my-test-queue-2"
+    ]
+}
+
+### Send message to capx-worker via HTTP, testing for bad file
+POST http://localhost:8081/receive HTTP/1.1
+content-type: application/json
+
+{
+    "source": "file:/workspace/src/message_handl_ing.py",
+    "context": {
+        "project_id": "project_id",
+        "timecode": "timecode"
+    },
+    "data": {
+        "sample": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    },
+    "action": "process",
+    "prev": [
+        {
+            "worker": "controller",
+            "start": 12345678,
+            "duration": 50
+        }
+    ],
+    "next": [
+        "amqp:my-test-queue-2"
+    ]
+}
+
+### Send message to capx-worker via HTTP, get source from url
+POST http://localhost:8081/receive HTTP/1.1
+content-type: application/json
+
+{
+    "source": "http://ifconfig.me",
+    "context": {
+        "project_id": "project_id",
+        "timecode": "timecode"
+    },
+    "data": {
+        "sample": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    },
+    "action": "process",
+    "prev": [
+        {
+            "worker": "controller",
+            "start": 12345678,
+            "duration": 50
+        }
+    ],
+    "next": [
+        "amqp:my-test-queue-2"
+    ]
+}
+
+### Send message to capx-worker via HTTP, testing for bad source url
+POST http://localhost:8081/receive HTTP/1.1
+content-type: application/json
+
+{
+    "source": "http://iffconfig.me",
+    "context": {
+        "project_id": "project_id",
+        "timecode": "timecode"
+    },
+    "data": {
+        "sample": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    },
+    "action": "process",
+    "prev": [
+        {
+            "worker": "controller",
+            "start": 12345678,
+            "duration": 50
+        }
+    ],
+    "next": [
+        "amqp:my-test-queue-2"
+    ]
+}
+
+### "post:http://localhost:8081/receive",
+
+### Send message to capx-worker through rmq test-queue-1, using rmq REST api
+POST http://localhost:8080/api/exchanges/capx-queue-vhost//publish HTTP/1.1
+content-type: application/json
+Authorization: Basic capx-queue-UsEr:capx-queue-PsWd
+
+{
+    "properties":{},
+    "routing_key":"my-test-queue-1",
+    "payload":"{
+        \"source\": \"file:/workspace/src/messagehandling.py\",
+        \"context\": {
+            \"project_id\": \"project_id\",
+            \"timecode\": \"timecode\"
+        },
+        \"data\": {
+            \"sample\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        },
+        \"action\": \"process\",
+        \"prev\": [
+            {
+                \"worker\": \"controller\",
+                \"start\": 12345678,
+                \"duration\": 50
+            }
+        ],
+        \"next\": [
+            \"amqp:my-test-queue-2\"
+        ]
+    }",
+    "payload_encoding": "string"
+}
+
