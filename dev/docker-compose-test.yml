@@ -6,6 +6,8 @@ services:
             dockerfile: ./dev/Dockerfile
         image: mysimplemysql8-tester
         container_name: mysimplemysql8-tester
+        environment:
+            - DB_WAIT_TIME=10
         networks:
             - default
 

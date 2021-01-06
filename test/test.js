@@ -12,7 +12,8 @@ var connection_config = {
 var connection_options = {
     pooling: { enabled: true, maxIdleTime: 30000, maxSize: 25, queueTimeout: 10000 }
 }
-console.log('waiting for database connection...');
+var wait_time_sec = parseInt(process.env['DB_WAIT_TIME']);
+console.log('Waiting for database connection...');
 
 var mysql = simpleMySQL(connection_config, connection_options);
 
@@ -34,9 +35,9 @@ mysql.awaitDbInit({ retries: 12, factor: 2, minTimeout: 1000, randomise: true })
         return mysql.query(q);
     })
     .then(() => {
-        console.log('table created, manual test for disconnection, 60 seconds');
+        console.log(`table created, manual test for disconnection, ${wait_time_sec} seconds`);
         return new Promise((resolve, reject) => {
-            setTimeout(resolve, 60*1000);
+            setTimeout(resolve, wait_time_sec*1000);
             console.log('has the db been disconnected manually? reconnected manually? assume test complete, continuing')
         });
     })
@@ -103,14 +104,17 @@ mysql.awaitDbInit({ retries: 12, factor: 2, minTimeout: 1000, randomise: true })
             .then(() => {
                 // then commit the transaction
                 return transaction.commit();
-            });
+            })
+            .catch(err => {
+                // rollback the transaction
+                console.log(err);
+                return transaction.rollback();
+            })
         })
         .catch(err => {
             console.log('Transaction failed');
             console.log(err);
-        })
-        // TODO: how should commit failures work?
-        // rollback
+        });
     })
     .then(() => {
         console.log('Select all data after transaction 1');
