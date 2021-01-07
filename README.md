@@ -5,10 +5,12 @@
 A thin wrapper around the official MySql8 XDevAPI connector exposing some common use-cases with a simple promise-based api.
 
 * [x] Connection pooling
-* [x] Wait for connection to be ready
+* [x] Easy api to test for db connection
 * [x] Basic SQL queries (using common SQL syntax instead of chainable api)
 * [ ] Transactions (WIP)
 * [ ] Collections (only supports chainable api)
+* Attempt to be compatible with multiple versions of [@mysql/xdevapi](https://www.npmjs.com/package/@mysql/xdevapi):
+    * [x] v8.0.22 (may change to a peer dependency eventually)
 
 Additional features
 * Init Promise: Wait for database connection to be up before resolving (useful for running in docker, esp in dev)
@@ -95,5 +97,5 @@ Promise.resolve()
 
 ```
 cd dev
-docker-compose up --build
+docker-compose -f docker-compose-test.yml up --build
 ```

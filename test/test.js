@@ -11,7 +11,7 @@ var connection_config = {
 };
 var connection_options = {
     pooling: { enabled: true, maxIdleTime: 30000, maxSize: 25, queueTimeout: 10000 }
-}
+};
 var wait_time_sec = parseInt(process.env['DB_WAIT_TIME']);
 console.log('Waiting for database connection...');
 
