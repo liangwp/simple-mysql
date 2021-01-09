@@ -19,13 +19,12 @@ var connection_config = {
 var connection_options = {
     pooling: { enabled: true, maxIdleTime: 30000, maxSize: 25, queueTimeout: 10000 }
 };
-var wait_time_sec = parseInt(process.env['DB_WAIT_TIME']);
-console.log('Waiting for database connection...');
 
 var mysql = simpleMySQL(connection_config, connection_options);
 
-describe('Integration testing', () => {
-    it('Wait and connect to DB (test waiting behaviour by starting db a bit later)', () => {
+describe('Integration testing', function () {
+    it('Wait and connect to DB (test waiting behaviour by starting db a bit later)', function () {
+        this.timeout(0); // mocha to allow this test to be slow
         return mysql.awaitDbInit({ retries: 12, factor: 2, minTimeout: 1000, randomise: true })
         .then(db_info => {
             // {
@@ -44,12 +43,17 @@ describe('Integration testing', () => {
         });
     });
     it('?? How to test for disconnection?');
-    it('CREATE TABLE', () => {
-        var k = Promise.resolve(3);
+    it('CREATE TABLE', function () {
+        var k = new Promise((resolve, reject) => {
+            setTimeout(resolve, 1000);
+        })
+        .then(() => {
+            return 3;
+        });
         return expect(k).to.eventually.equal(3);
     });
     it('does nothing again');
-    it('Disconnect and end the program cleanly', () =>{
+    it('Disconnect and end the program cleanly', function () {
         return mysql.close();
     });
 })
