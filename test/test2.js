@@ -1,3 +1,3 @@
 const simpleMySQL = require('..');
 
-console.log('test file2');
+console.log('running test file2');

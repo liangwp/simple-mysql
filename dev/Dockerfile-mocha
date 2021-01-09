@@ -5,19 +5,14 @@ RUN apk add --no-cache dumb-init
 WORKDIR /workspace
 RUN mkdir -p mysimplemysql8/lib && mkdir test
 
-COPY ./lib /workspace/mysimplemysql8/lib
-COPY ./test /workspace/mysimplemysql8/test
 COPY package.json /workspace/mysimplemysql8
 
 WORKDIR /workspace/mysimplemysql8
 
 RUN npm install
 
-# COPY ./test /workspace/test
-
-# WORKDIR /workspace/test
-
-# RUN npm init -y && npm install ../mysimplemysql8
+COPY ./lib /workspace/mysimplemysql8/lib
+COPY ./test /workspace/mysimplemysql8/test
 
 ENTRYPOINT [ "dumb-init", "--" ]
 
