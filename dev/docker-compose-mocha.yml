@@ -1,0 +1,17 @@
+version: "3.6"
+services:
+    mysimplemysql8-tester:
+        build:
+            context: ../
+            dockerfile: ./dev/Dockerfile-mocha
+        image: mysimplemysql8-tester
+        container_name: mysimplemysql8-tester
+        environment:
+            - DB_WAIT_TIME=10
+        networks:
+            - default
+
+    
+networks:
+    default:
+        name: mysql-test-net

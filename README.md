@@ -92,10 +92,16 @@ Promise.resolve()
 
 ```
 
+## Run example
+
+```
+cd dev
+docker-compose -f docker-compose-example.yml up --build
+```
 
 ## Run tests
 
 ```
 cd dev
-docker-compose -f docker-compose-test.yml up --build
+docker-compose -f docker-compose-mocha.yml up --build
 ```

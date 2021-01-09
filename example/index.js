@@ -1,5 +1,7 @@
 'use strict';
 
+// to change to mocha/chai/chai-as-promised
+
 const simpleMySQL = require('mysimplemysql8');
 
 var connection_config = {

@@ -3,7 +3,7 @@ services:
     mysimplemysql8-tester:
         build:
             context: ../
-            dockerfile: ./dev/Dockerfile
+            dockerfile: ./dev/Dockerfile-example
         image: mysimplemysql8-tester
         container_name: mysimplemysql8-tester
         environment:
