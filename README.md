@@ -12,8 +12,12 @@ A thin wrapper around the official MySql8 XDevAPI connector exposing some common
 * Attempt to be compatible with multiple versions of [@mysql/xdevapi](https://www.npmjs.com/package/@mysql/xdevapi):
     * [x] v8.0.22 (may change to a peer dependency eventually)
 
-Additional features
-* Init Promise: Wait for database connection to be up before resolving (useful for running in docker, esp in dev)
+Additional features and notes
+* Init Promise:
+    * Wait for database connection to be up before resolving (useful for running in docker, esp in dev)
+* Dropped connections: 
+    * If connection to DB drops, queries will fail and throw an error.
+    * When connection to DB comes back, queries will be successful again without needing to re-initialize the client.
 
 ## Usage (something like this, but not exactly)
 

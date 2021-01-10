@@ -40,13 +40,26 @@ mysql.awaitDbInit({ retries: 12, factor: 2, minTimeout: 1000, randomise: true })
         console.log(`table created, manual test for disconnection, ${wait_time_sec} seconds`);
         return new Promise((resolve, reject) => {
             setTimeout(resolve, wait_time_sec*1000);
-            console.log('has the db been disconnected manually? reconnected manually? assume test complete, continuing')
+            console.log('If db is disconnected and reconnected (manually), a subsequent query should succeed.')
         });
     })
     .then(() => {
         console.log('Insert a single row');
         var q = 'INSERT INTO simple_test (v1, v2) VALUES (0, 12)';
         return mysql.query(q)
+        .then(d => {
+            console.log(d);
+        })
+        .catch(err => {
+            console.log(err);
+            return new Promise((resolve, reject) => {
+                console.log('Db still disconnected, trying again in 5 seconds in catch block. Query should succeed if db has come back');
+                setTimeout(resolve, 5000)
+            });
+        })
+        .then(() => {
+            return mysql.query(q);
+        })
         .then(d => {
             console.log(d);
         });

@@ -40,9 +40,16 @@ describe('Integration testing', function () {
             // }
             expect(db_info).to.have.property('pooling');
             expect(db_info.pooling).to.be.true;
+            expect(db_info).to.have.property('auth');
+            expect(db_info).to.have.property('schema');
+            expect(db_info).to.have.property('ssl');
+            expect(db_info).to.have.property('user');
+            expect(db_info).to.have.property('host');
+            expect(db_info).to.have.property('port');
+            expect(db_info).to.have.property('dbUser');
+            expect(db_info).to.have.property('socket');
         });
     });
-    it('?? How to test for disconnection?');
     it('CREATE TABLE', function () {
         var k = new Promise((resolve, reject) => {
             setTimeout(resolve, 1000);
