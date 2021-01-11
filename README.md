@@ -6,7 +6,7 @@ A thin wrapper around the official MySql8 XDevAPI connector exposing some common
 
 * [x] Connection pooling
 * [x] Easy api to test for db connection
-* [x] Basic SQL queries (using common SQL syntax instead of chainable api)
+* [x] SQL queries (using SQL statements instead of chainable api)
 * [ ] Transactions (WIP)
 * [ ] Collections (only supports chainable api)
 * Attempt to be compatible with multiple versions of [@mysql/xdevapi](https://www.npmjs.com/package/@mysql/xdevapi):
@@ -19,8 +19,9 @@ Additional features and notes
     * If connection to DB drops, queries will fail and throw an error.
     * When connection to DB comes back, queries will be successful again without needing to re-initialize the client.
 
-## Usage (something like this, but not exactly)
+## Usage
 
+### Connect to DB
 ```
 const simpleMySQL = require('mysimplemysql8');
 
@@ -49,21 +50,37 @@ mysql.awaitDbInit(retry_params) # if retry_params not supplied, defaults to the 
 .then(() => {
     // connection is ready
 })
+```
 
-# test for connection
+### Test for Connection / Get Connection Params
+```
 mysql.inspect()
 .then(data => {
     // do your stuff
+    // data {
+    //     pooling: true,
+    //     auth: 'PLAIN',
+    //     schema: 'test_db',
+    //     ssl: true,
+    //     user: 'test_user',
+    //     host: 'mysql8-sample',
+    //     port: 33060,
+    //     dbUser: 'test_user',
+    //     socket: undefined
+    // }
 });
+```
 
-# perform simple query
+### Perform Simple Query
+```
 mysql.query('SELECT col1, col2 FROM some_table WHERE col3 = ?', [col3_binding])
 .then(data => {
     // do your stuff
 });
+```
 
-# start transaction
-
+### Transaction (WIP)
+```
 Promise.resolve()
 .then(() => {
     return mysql.startTransaction()
@@ -93,7 +110,6 @@ Promise.resolve()
     // transaction ok
     // OR rollback successful
 });
-
 ```
 
 ## Run example
