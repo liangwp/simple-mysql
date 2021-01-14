@@ -1,17 +1,19 @@
-# mysql-xdevapi
+# simple-myxql
 
-## Features
+## Description
 
 A thin wrapper around the official MySql8 XDevAPI connector, exposing some common use-cases with a simple promise-based api.
 
+## Features
+
+* Depends on [@mysql/xdevapi](https://www.npmjs.com/package/@mysql/xdevapi) v8.0.22
 * [x] Connection pooling
 * [x] Easy api to test for db connection
 * [x] SQL queries (using SQL statements instead of chainable api)
 * [ ] Transactions (WIP)
 * [ ] Collections (only supports chainable api)
 * [ ] Expose underlying mysqlx.client object
-* Attempt to be compatible with multiple versions of [@mysql/xdevapi](https://www.npmjs.com/package/@mysql/xdevapi):
-    * [x] v8.0.22 (maybe change to a peer dependency?)
+
 
 Additional features and notes
 * Init Promise:
@@ -113,16 +115,23 @@ Promise.resolve()
 });
 ```
 
-## Run example
+## Run example (in docker)
 
 ```
 cd dev
 docker-compose -f docker-compose-example.yml up --build
 ```
 
-## Run tests
+## Run tests (in docker)
 
 ```
 cd dev
 docker-compose -f docker-compose-mocha.yml up --build
 ```
+
+
+## Changelog
+
+| Date | Version | Description |
+| ---- | ------------------|---------------------------------------------------------------------------------------- |
+| 2021.01.14 | v1.0.0      | Seems usable for most simple queries. Transactions support is still incomplete. |
