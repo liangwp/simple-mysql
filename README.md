@@ -1,4 +1,4 @@
-# simple-myxql
+# simple-mysql
 
 ## Description
 
