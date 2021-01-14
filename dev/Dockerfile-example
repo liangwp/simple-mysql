@@ -3,16 +3,16 @@ FROM node:12-alpine
 RUN apk add --no-cache dumb-init
 
 WORKDIR /workspace
-RUN mkdir -p mysimplemysql8/lib && mkdir test
+RUN mkdir -p simple-mysql/lib && mkdir test
 
-COPY ./lib /workspace/mysimplemysql8/lib
-COPY package.json /workspace/mysimplemysql8
+COPY ./lib /workspace/simple-mysql/lib
+COPY package.json /workspace/simple-mysql
 COPY ./example /workspace/example
 
 WORKDIR /workspace/example
 
 ENV NODE_ENV=production
-RUN npm init -y && npm install ../mysimplemysql8
+RUN npm init -y && npm install ../simple-mysql
 
 ENTRYPOINT [ "dumb-init", "--" ]
 

@@ -1,16 +1,17 @@
-# MySimpleMySql8
+# mysql-xdevapi
 
 ## Features
 
-A thin wrapper around the official MySql8 XDevAPI connector exposing some common use-cases with a simple promise-based api.
+A thin wrapper around the official MySql8 XDevAPI connector, exposing some common use-cases with a simple promise-based api.
 
 * [x] Connection pooling
 * [x] Easy api to test for db connection
 * [x] SQL queries (using SQL statements instead of chainable api)
 * [ ] Transactions (WIP)
 * [ ] Collections (only supports chainable api)
+* [ ] Expose underlying mysqlx.client object
 * Attempt to be compatible with multiple versions of [@mysql/xdevapi](https://www.npmjs.com/package/@mysql/xdevapi):
-    * [x] v8.0.22 (may change to a peer dependency eventually)
+    * [x] v8.0.22 (maybe change to a peer dependency?)
 
 Additional features and notes
 * Init Promise:
@@ -23,7 +24,7 @@ Additional features and notes
 
 ### Connect to DB
 ```
-const simpleMySQL = require('mysimplemysql8');
+const simpleMySQL = require('simple-mysql');
 
 var connection_config = {
     user: 'test_user',

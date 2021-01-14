@@ -1,11 +1,11 @@
 version: "3.6"
 services:
-    mysimplemysql8-tester:
+    simplemysql-tester:
         build:
             context: ../
             dockerfile: ./dev/Dockerfile
-        image: mysimplemysql8-tester
-        container_name: mysimplemysql8-tester
+        image: simplemysql-tester
+        container_name: simplemysql-tester
         networks:
             - default
 

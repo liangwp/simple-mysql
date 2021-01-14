@@ -1,11 +1,11 @@
 version: "3.6"
 services:
-    mysimplemysql8-example:
+    simplemysql-example:
         build:
             context: ../
             dockerfile: ./dev/Dockerfile-example
-        image: mysimplemysql8-example
-        container_name: mysimplemysql8-example
+        image: simplemysql-example
+        container_name: simplemysql-example
         environment:
             - DB_WAIT_TIME=10
         networks:

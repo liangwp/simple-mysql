@@ -2,7 +2,7 @@
 
 // to change to mocha/chai/chai-as-promised
 
-const simpleMySQL = require('mysimplemysql8');
+const simpleMySQL = require('simple-mysql');
 
 var connection_config = {
     user: 'test_user',
