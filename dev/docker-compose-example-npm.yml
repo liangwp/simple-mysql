@@ -1,0 +1,17 @@
+version: "3.6"
+services:
+    simplemysql-example-npm:
+        build:
+            context: ../
+            dockerfile: ./dev/Dockerfile-example-npm
+        image: simplemysql-example-npm
+        container_name: simplemysql-example-npm
+        environment:
+            - DB_WAIT_TIME=10
+        networks:
+            - default
+
+    
+networks:
+    default:
+        name: mysql-test-net

@@ -3,7 +3,7 @@ FROM node:12-alpine
 RUN apk add --no-cache dumb-init
 
 WORKDIR /workspace
-RUN mkdir -p simple-mysql/lib && mkdir test
+RUN mkdir -p simple-mysql/lib
 
 COPY ./lib /workspace/simple-mysql/lib
 COPY package.json /workspace/simple-mysql

@@ -134,4 +134,5 @@ docker-compose -f docker-compose-mocha.yml up --build
 
 | Date | Version | Description |
 | ---- | ------------------|---------------------------------------------------------------------------------------- |
+| 2021.01.14 | v1.0.1      | Update example to work dev (git cloned), as well as for npm version. |
 | 2021.01.14 | v1.0.0      | Seems usable for most simple queries. Transactions support is still incomplete. |

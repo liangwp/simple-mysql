@@ -1,5 +1,5 @@
 {
-  "name": "simple-mysql",
+  "name": "@liangwp/simple-mysql",
   "version": "1.0.0",
   "description": "",
   "main": "lib/main.js",
