@@ -148,7 +148,7 @@ docker-compose -f docker-compose-mocha.yml up --build
 
 | Date | Version | Description |
 | ---- | ------------------|---------------------------------------------------------------------------------------- |
-| 2021.04.04 | v1.0.3      | Comment out the console.log in `awaitDbInit()` from spamming into code that depends on this module. Should figure out a cleaner logging method later. |
+| 2021.04.04 | v1.0.4      | Comment out the console.log in `awaitDbInit()` from spamming into code that depends on this module. Should figure out a cleaner logging method later. |
 | 2021.01.14 | v1.0.2      | Fix silly typo, add github link. |
 | 2021.01.14 | v1.0.1      | Update example to work dev (git cloned), as well as for npm version. |
 | 2021.01.14 | v1.0.0      | Seems usable for most simple queries. Transactions support is still incomplete. |
