@@ -1,6 +1,6 @@
 {
   "name": "@liangwp/simple-mysql",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "lib/main.js",
   "repository": {
